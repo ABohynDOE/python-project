@@ -329,6 +329,26 @@ flake8 --max-line-length 90 .
 
 ### Pytest
 
+[pytest](https://docs.pytest.org/en/6.2.x/index.html) is tool that helps you write better code by rendering code testing easy.
+It has the advantage of needing no boilerplate code (i.e., a test can be easily written without needing additional surrounding code) and is easily scalable to an entire library.
+
+`pytest` runs all files of the form `test_*.py` or `*_test.py` in the current directory.
+Inside these files, `pytest` will verify the output of the function of the form `test_*()`.
+However multiples test functions can be grouped into the same file, as long as they have different names.
+
+By default, `poetry` creates a `tests/` folder in which all test files are stored.
+This is not mandatory for `pytest` but helps structuring your project.
+`pytest` can be called on a directory or on a single file, from python or from the poetry `run` command
+
+```bash
+poetry run pytest path/to/test_dir
+poetry run pytest path/to/test_file.py
+python -m pytest path/to/test_dir
+```
+
+Useful options for `pytest` are `-q` to quietly pass the tests (useful if there are a lot of tests), and `-v` to add verbosity to the tests (useful if a lot of tests are in the same file).
+
+<!-- TODO: add types of tests -->
 ### Coverage
 
 ### Sphinx
