@@ -26,7 +26,9 @@ Contrarly to "classical" python packages, that needs multiple separate files (`s
     - [Pytest](#pytest)
     - [Coverage](#coverage)
     - [Sphinx](#sphinx)
+      - [Sphinx extensions](#sphinx-extensions)
     - [Pydocstyle](#pydocstyle)
+  - [Building and publishing your project](#building-and-publishing-your-project)
 {:toc}
 Table of contents created through: https://ecotrust-canada.github.io/markdown-toc/ -->
 
@@ -77,8 +79,10 @@ rm README.rst && touch README.md
 echo "# project-name" >> README.md
 touch project-name/main.py
 ```
+<!-- TODO: add my workflow -->
 
 Now let us go through the different files created by the `poetry new` command.
+<!-- TODO: add separate following sections to separate files -->
 
 #### pyproject.toml
 
@@ -352,7 +356,77 @@ Useful options for `pytest` are `-q` to quietly pass the tests (useful if there 
 <!-- TODO: add types of tests -->
 ### Coverage
 
+[Coverage](https://coverage.readthedocs.io/en/6.0.2/index.html) is tool to check for coverage.
+
+Run it as
+
+```bash
+poetry run coverage run -m pytest path/to/test_dir
+```
+
+Report the result as
+
+```bash
+poetry run coverage report
+```
+
+The output looks like this
+
+```bash
+Name                         Stmts   Miss  Cover
+------------------------------------------------
+test_project/__init__.py         2      0   100%
+test_project/main.py            18      6    67%
+tests/__init__.py                0      0   100%
+tests/test_test_project.py      10      0   100%
+------------------------------------------------
+TOTAL                           30      6    80%
+```
+
 ### Sphinx
+
+[Sphinx](https://www.sphinx-doc.org/en/master/index.html) creates documentation.
+Create a `docs/` folder to store all documentation-related files.
+Use the quickstart tool of sphinx
+
+```bash
+cd docs/
+poetry run sphinx-quickstart
+```
+
+This asks you a few questions about the project and creates two folders:
+
+- `build/`: contains the built documentation
+- `source/`: contains the source files for the documentation
+
+The `source/` folder contains a `conf.py` file, for the configuration of sphinx when it builds the documentation.
+To build your documentation, simply use
+
+```bash
+poetry run make html
+```
+
+After running the command once, you'll find all documentation files in the `build/` folder.
+
+#### Sphinx extensions
+
+Several extensions are useful in sphinx.
+They can be added in extensions list of the `conf.py` file.
+
+- autodoc: allows for the automatic build of functions and classes documentation in your package
+- napoleon: allows the use of numpy docstrings
+
+Be aware, that in order to use the `autodoc` extension, you must make your package "discoverable" by sphinx.
+To do this, uncomment the `Path setup` section of the `conf.py` file.
+It should look like this
+
+```python
+import os
+import sys
+sys.path.insert(0, os.path.abspath('../..')) # Path is set assuming your conf.py file is in ./docs/
+```
+
+<!-- TODO: investigate and add links to readthedocs.io -->
 
 ### Pydocstyle
 
@@ -362,3 +436,5 @@ Installed using
 ```bash
 poetry add -D pydocstyle
 ```
+
+## Building and publishing your project
