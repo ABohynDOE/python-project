@@ -5,6 +5,8 @@ Whether it is a single project or a package that will be published later, `poetr
 
 Contrarly to "classical" python packages, that needs multiple separate files (`setup.py`, `setup.cfg`, `MANIFEST.in`, ...) `poetry` only needs one file to do all of that: `pyproject.toml`.
 
+{:toc}
+
 ## Creating a new project
 
 ### Installing poetry
