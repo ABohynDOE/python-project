@@ -5,10 +5,9 @@ Whether it is a single project or a package that will be published later, `poetr
 
 Contrarly to "classical" python packages, that needs multiple separate files (`setup.py`, `setup.cfg`, `MANIFEST.in`, ...) `poetry` only needs one file to do all of that: `pyproject.toml`.
 
-## Table of contents
+<!-- ## Table of contents
 
 - [Python project setup with poetry](#python-project-setup-with-poetry)
-  - [Table of contents](#table-of-contents)
   - [Creating a new project](#creating-a-new-project)
     - [Installing poetry](#installing-poetry)
     - [Starting a new project](#starting-a-new-project)
@@ -29,6 +28,7 @@ Contrarly to "classical" python packages, that needs multiple separate files (`s
     - [Sphinx](#sphinx)
     - [Pydocstyle](#pydocstyle)
 {:toc}
+Table of contents created through: https://ecotrust-canada.github.io/markdown-toc/ -->
 
 ## Creating a new project
 
@@ -85,10 +85,10 @@ Now let us go through the different files created by the `poetry new` command.
 This file contains all the details about the project and its dependencies.
 It is divided in four basic sections:
 
-* `[tool.poetry]`
-* `[tool.poetry.dependencies]`
-* `[tool.poetry.dev-dependencies]`
-* `[build-system]`
+- `[tool.poetry]`
+- `[tool.poetry.dependencies]`
+- `[tool.poetry.dev-dependencies]`
+- `[build-system]`
 
 The first section, `[tool.poetry]`, contains the details about the project:
 
@@ -177,8 +177,8 @@ touch project-name/main.py
 This folder contains the tests of your code files that will be used by a testing library later on (`pytest` in our case).
 By default `poetry` creates two files in this folder:
 
-* `__init__.py`: empty file that shouldn't be modified if your tests don't need specific packages.
-* `test_project-name.py`: a file that contains a test for the version of your package.
+- `__init__.py`: empty file that shouldn't be modified if your tests don't need specific packages.
+- `test_project-name.py`: a file that contains a test for the version of your package.
 
     ```python
     import pytest
@@ -198,8 +198,8 @@ A good practice it to create a test for each new function that you create in you
 
 There are two types of dependencies:
 
-* Development dependencies: only used in the development framework, not included in the published version of the package.
-* Package dependencies: used in the code of the package, will be included in the published version of the package.
+- Development dependencies: only used in the development framework, not included in the published version of the package.
+- Package dependencies: used in the code of the package, will be included in the published version of the package.
 
 In both cases, to add a dependencies in your project, DO NOT use `pip`, but rather use
 
@@ -262,71 +262,56 @@ To exit it, use `exit` or `deactivate`.
 
 ## Useful packages for a new project
 
-Here is a list of useful packages that should be included in every new python projects:
+Here is a list of useful packages, that are interesting to add to the development environment of your new python project.
 
-* black
-* flake8
-* isort
-* pytest
-* coverage
-* sphinx
-* pydocstyle
+- black
+- flake8
+- isort
+- pytest
+- coverage
+- sphinx
+- pydocstyle
 
-Also considered are:
-
-* tox
-* pre-commit
+They can all be added using the `poetry add -D package-name` command.
 
 ### Black
 
-[black](https://black.readthedocs.io/en/stable/) is a code formatter that follows PEP8 guidelines.
-It is added to poetry as a developper feature
+[black](https://black.readthedocs.io/en/stable/) is a code formatter that follows [PEP8](https://www.python.org/dev/peps/pep-0008/) guidelines.
+It can either be applied to an entire directory or to a single file, and can be run through python.
 
 ```bash
-poetry add -D black
-```
-
-and can either be applied to an entire directory or to a single file, and can be run through python
-
-```bash
-poetry run black dir
+poetry run black path/to/dir
 poetry run black path/to/file.py
-python -m black dir
+python -m black path/to/dir
 ```
 
 It can also be applied inside the virtual environement of poetry (`.venv`) using `black dir` or `black singlefile.py`.
-
-black applies the changes to the code when called.
+`black` applies the changes to the code when called.
 To prevent it from actually changing your code, you can call `black --check` and it will output the proposed changes to your files.
 
-If you want black not to change certain files, you need to create a configuration section called `[tool.black]` in the `pyproject.toml` file.
-For example, to exclude the `foo.py` file in the root folder, simply add:
+If you do not want black to change certain files, you need to create a configuration section called `[tool.black]` in the `pyproject.toml` file.
+For example, to exclude the `foo.py` file in the root folder and set the prefered line length to 79, simply add:
 
 ```toml
 [tool.black]
-line-length = 119
+line-length = 79
 exclude = '^/foo.py'
 ```
 
 ### Flake8
 
 [flake8](https://flake8.pycqa.org/en/latest/) is a tool that enforces style consistency in your code and follows PEP8 guidelines.
-
-It is added to poetry as a developper feature
-
-```bash
-poetry add -D flake8
-```
-
-It can be either applied to a single file or a whole directory.
+It performs lint checks on your code (linting highlights syntactical and stylistic problems in your Python source code).
+It can be either applied to a single file or a whole directory, and can be run through python.
 
 ```bash
-poetry run flake8 dir
+poetry run flake8 path/to/dir
 poetry run flake8 path/to/file.py
-python -m flake8 dir
+python -m flake8 path/to/dir
 ```
 
-The default maximum line length for flake8 is 79 characters.
+`flake8` checks for line length and has a default value of 79 characters.
+You should change that value to match to one of `black` (or the other way around).
 To change that, you can either add a `setup.cfg` file in the root of your project, that contains
 
 ```toml
