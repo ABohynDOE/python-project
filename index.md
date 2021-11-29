@@ -83,6 +83,7 @@ Now let us go through the different files created by the `poetry new` command.
 #### pyproject.toml
 
 This file contains all the details about the project and its dependencies.
+An example of a basic `pyproject.toml` file can be found [here](pyproject.toml).
 It is divided in four basic sections:
 
 - `[tool.poetry]`

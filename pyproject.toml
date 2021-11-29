@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "python-project"
+version = "0.1.0"
+description = ""
+authors = ["Alexandre Bohyn <alexandre.bohyn@kuleuven.be>"]
+readme = "README.md"
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+black = "^21.11b0"
+flake8 = "^4.0.1"
+mypy = "^0.910"
+coverage = "^6.1.2"
+Sphinx = "^4.3.0"
+pydocstyle = "^6.1.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
