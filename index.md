@@ -5,7 +5,41 @@ Whether it is a single project or a package that will be published later, `poetr
 
 Contrarly to "classical" python packages, that needs multiple separate files (`setup.py`, `setup.cfg`, `MANIFEST.in`, ...) `poetry` only needs one file to do all of that: `pyproject.toml`.
 
-* TOC
+* [Creating a new project](#creating-a-new-project)
+
+* [Installing poetry](#installing-poetry)
+
+- [Python project setup with poetry](#python-project-setup-with-poetry)
+  - [Creating a new project](#creating-a-new-project)
+    - [Installing poetry](#installing-poetry)
+    - [Starting a new project](#starting-a-new-project)
+      - [pyproject.toml](#pyprojecttoml)
+      - [README](#readme)
+      - [project-name/ folder](#project-name-folder)
+      - [tests/ folder](#tests-folder)
+    - [Adding dependencies](#adding-dependencies)
+    - [Create a virtual environement](#create-a-virtual-environement)
+      - [Creating a virtual environment](#creating-a-virtual-environment)
+      - [Using your virtual environment](#using-your-virtual-environment)
+  - [Useful packages for a new project](#useful-packages-for-a-new-project)
+    - [Black](#black)
+    - [Flake8](#flake8)
+    - [iSort](#isort)
+    - [Pytest](#pytest)
+    - [Coverage](#coverage)
+    - [Sphinx](#sphinx)
+    - [Pydocstyle](#pydocstyle)
+
+* [Useful packages for a new project](#useful-packages-for-a-new-project)
+
+* [Black](#black)
+
+* [Flake8](#flake8)
+* [iSort](#isort)
+* [Pytest](#pytest)
+* [Coverage](#coverage)
+* [Sphinx](#sphinx)
+* [Pydocstyle](#pydocstyle)
 {:toc}
 
 ## Creating a new project
@@ -63,10 +97,10 @@ Now let us go through the different files created by the `poetry new` command.
 This file contains all the details about the project and its dependencies.
 It is divided in four basic sections:
 
-- `[tool.poetry]`
-- `[tool.poetry.dependencies]`
-- `[tool.poetry.dev-dependencies]`
-- `[build-system]`
+* `[tool.poetry]`
+* `[tool.poetry.dependencies]`
+* `[tool.poetry.dev-dependencies]`
+* `[build-system]`
 
 The first section, `[tool.poetry]`, contains the details about the project:
 
@@ -155,8 +189,8 @@ touch project-name/main.py
 This folder contains the tests of your code files that will be used by a testing library later on (`pytest` in our case).
 By default `poetry` creates two files in this folder:
 
-- `__init__.py`: empty file that shouldn't be modified if your tests don't need specific packages.
-- `test_project-name.py`: a file that contains a test for the version of your package.
+* `__init__.py`: empty file that shouldn't be modified if your tests don't need specific packages.
+* `test_project-name.py`: a file that contains a test for the version of your package.
 
     ```python
     import pytest
@@ -176,8 +210,8 @@ A good practice it to create a test for each new function that you create in you
 
 There are two types of dependencies:
 
-- Development dependencies: only used in the development framework, not included in the published version of the package.
-- Package dependencies: used in the code of the package, will be included in the published version of the package.
+* Development dependencies: only used in the development framework, not included in the published version of the package.
+* Package dependencies: used in the code of the package, will be included in the published version of the package.
 
 In both cases, to add a dependencies in your project, DO NOT use `pip`, but rather use
 
@@ -242,18 +276,18 @@ To exit it, use `exit` or `deactivate`.
 
 Here is a list of useful packages that should be included in every new python projects:
 
-- black
-- flake8
-- isort
-- pytest
-- coverage
-- sphinx
-- pydocstyle
+* black
+* flake8
+* isort
+* pytest
+* coverage
+* sphinx
+* pydocstyle
 
 Also considered are:
 
-- tox
-- pre-commit
+* tox
+* pre-commit
 
 ### Black
 
