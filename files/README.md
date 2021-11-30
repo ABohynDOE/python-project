@@ -1,4 +1,4 @@
-# README
+# README.rst
 
 The `README` file introduces the project.
 It contains all informations required to understand the project, the code and its usage.
