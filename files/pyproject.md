@@ -4,12 +4,9 @@ This file contains all the details about the project and its dependencies.
 An example of a basic `pyproject.toml` file can be found [here](https://github.com/ABohynDOE/python-project/blob/88338f296665a48c4909ba28e57a52b33ed084b1/pyproject.toml).
 It is divided in four basic sections:
 
-- `[tool.poetry]`
-- `[tool.poetry.dependencies]`
-- `[tool.poetry.dev-dependencies]`
-- `[build-system]`
+## `[tool.poetry]`
 
-The first section, `[tool.poetry]`, contains the details about the project:
+This section contains the details about the project:
 
 ```toml
 [tool.poetry]
@@ -33,7 +30,9 @@ The full list is available on the [poetry website](https://python-poetry.org/doc
 
 This is the only section that should be edited by hand as poetry provides a set of commands to modify the other sections of the file.
 
-The second section, `[tool.poetry.dependencies]`, contains the version numbers of the packages used in the project.
+## `[tool.poetry.dependencies]`
+
+This section contains the version numbers of the packages used in the project.
 By default, it only contains the version of python you are using.
 
 ```toml
@@ -41,7 +40,9 @@ By default, it only contains the version of python you are using.
 python = "^3.7"
 ```
 
-The third section, `[tool.poetry.dev-dependencies]`, only contains information about packages that are used in the development phase of the project.
+## `[tool.poetry.dev-dependencies]`
+
+This section only contains information about packages that are used in the development phase of the project.
 These packages will not be included in the published version of the project.
 By default, poetry includes `pytest`.
 
@@ -50,7 +51,9 @@ By default, poetry includes `pytest`.
 pytest = "^3.0"
 ```
 
-The last section, `[build-system]`, details the information about poetry's version and the API used to build the project.
+## `[build-system]`
+
+The last section details the information about poetry's version and the API used to build the project.
 
 ```toml
 [build-system]
