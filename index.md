@@ -12,24 +12,27 @@ and added by pasting the output and adding {toc:} at the end -->
 
 ### Installing poetry
 
-First, ensure that poetry is installed in your shell.
-If this is not the case, the easiest way to do it is to use `pip`:
+The easiest way to install poetry is to use `pip`:
 
 ```bash
 pip install poetry
 ```
 
+To verify that it is installed, you can use:
+
+```bash
+poetry about
+```
+
 ### Starting a new project
 
-To create a new project, simply use
+To create a new project named `project-name` simply use
 
 ```bash
 poetry new project-name
 ```
 
-Be aware that poetry needs to be in the path variables if you want to use it from the command line.
-
-Creating a new project will create a new directory named `project-name` with the following tree structure
+This will create a new folder in the current directory named `project-name` with the following tree structure
 
 ```bash
 project-name
@@ -42,6 +45,16 @@ project-name
     └── test_project-name.py
 ```
 
+The following sections details the different files created by the `poetry new` command:
+
+- [`pyproject.toml`](files/pyproject.md)
+- [`README.rst`](files/README.md)
+- [`project-name/` folder](files/project-name.md)
+- [`tests/` folder](files/tests.md)
+
+## My workflow
+
+Here are the changes that I apply to my project.
 In order to track the changes on the project, initialize the folder created as a a git repository (not GitHub, simply git).
 
 I also like to change the README file from ReStructuredText (`.rst`) to markdown format (`.md`), but this is not a mandatory step.
@@ -55,125 +68,7 @@ rm README.rst && touch README.md
 echo "# project-name" >> README.md
 touch project-name/main.py
 ```
-<!-- TODO: add my workflow -->
-
-Now let us go through the different files created by the `poetry new` command.
-<!-- TODO: add separate following sections to separate files -->
-
-#### pyproject.toml
-
-This file contains all the details about the project and its dependencies.
-An example of a basic `pyproject.toml` file can be found [here](https://github.com/ABohynDOE/python-project/blob/88338f296665a48c4909ba28e57a52b33ed084b1/pyproject.toml).
-It is divided in four basic sections:
-
-- `[tool.poetry]`
-- `[tool.poetry.dependencies]`
-- `[tool.poetry.dev-dependencies]`
-- `[build-system]`
-
-The first section, `[tool.poetry]`, contains the details about the project:
-
-```toml
-[tool.poetry]
-name = "project-name"
-version = "0.1.0"
-description = ""
-authors = ["Author Name <author.name@email.com>"]
-```
-
-It is good practice to fill in the description, add a `README` and a `license` section.
-
-```toml
-license = "MIT"
-readme = "README.rst"
-```
-
-To help find the suitable license for your project you can visit [this website](https://choosealicense.com/).
-
-Other sections can be added to further detail the project.
-The full list is available on the [poetry website](https://python-poetry.org/docs/pyproject/).
-
-This is the only section that should be edited by hand as poetry provides a set of commands to modify the other sections of the file.
-
-The second section, `[tool.poetry.dependencies]`, contains the version numbers of the packages used in the project.
-By default, it only contains the version of python you are using.
-
-```toml
-[tool.poetry.dependencies]
-python = "^3.7"
-```
-
-The third section, `[tool.poetry.dev-dependencies]`, only contains information about packages that are used in the development phase of the project.
-These packages will not be included in the published version of the project.
-By default, poetry includes `pytest`.
-
-```toml
-[tool.poetry.dev-dependencies]
-pytest = "^3.0"
-```
-
-The last section, `[build-system]`, details the information about poetry's version and the API used to build the project.
-
-```toml
-[build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
-```
-
-#### README
-
-The `README` file introduces the project.
-It contains all informations required to understand the project, the code and its usage.
-The usual sections are "Installation", "Usage", "License" and "Contributing".
-It is usually written using markdown (`.md` files), here is a [reference](https://commonmark.org/help/) page.
-
-A good tyemplate for a basic `README` file can be found [here](https://www.makeareadme.com/#template-1).
-
-By default, `poetry` creates a reStructuredText file (`.rst`) that is empty, but that can be changed with a single command line (from the project directory)
-
-```bash
-rm README.rst && touch README.md
-```
-
-#### project-name/ folder
-
-This folder contains all the python code of the project.
-By default, `poetry` populates it with a `__init__.py` file that only contains the version of the package.
-
-```python
-__version__ = "0.1.0
-```
-
-This is the folder in which you add your python code as your project grows.
-A good practice is to create a `main.py` file to start.
-
-```bash
-touch project-name/main.py
-```
-
-<!-- TODO: add details about versioning in poetry -->
-
-#### tests/ folder
-
-This folder contains the tests of your code files that will be used by a testing library later on (`pytest` in our case).
-By default `poetry` creates two files in this folder:
-
-- `__init__.py`: empty file that shouldn't be modified if your tests don't need specific packages.
-- `test_project-name.py`: a file that contains a test for the version of your package.
-
-    ```python
-    import pytest
-    
-    from test_project import __version__
-
-
-    def test_version():
-        assert __version__ == "0.1.0"
-    ```
-
-A good practice it to create a test for each new function that you create in your code.
-
-<!-- TODO: add details about test -->
+<!-- TODO: detail my workflow -->
 
 ### Adding dependencies
 
