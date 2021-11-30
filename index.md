@@ -1,36 +1,12 @@
 # Python project setup with poetry
 
-In this document, we detail how to setup a python project using `poetry`.
-Whether it is a single project or a package that will be published later, `poetry` allows you to manage dependencies to the different packages used in your project and makes the project easy to build, share and publish.
+In this document, we detail how to setup a python project using [Poetry](https://python-poetry.org/).
+Whether it is a single project or a package that will be published later, Poetry allows you to manage dependencies to the different packages used in your project and makes the project easy to build, share and publish.
 
-Contrarly to "classical" python packages, that needs multiple separate files (`setup.py`, `setup.cfg`, `MANIFEST.in`, ...) `poetry` only needs one file to do all of that: `pyproject.toml`.
+In opposition with other python packaging options that needs multiple separate files (`setup.py`, `setup.cfg`, `MANIFEST.in`, ...),Poetry only needs one file for all the configuration: `pyproject.toml`.
 
-<!-- ## Table of contents
-
-- [Python project setup with poetry](#python-project-setup-with-poetry)
-  - [Creating a new project](#creating-a-new-project)
-    - [Installing poetry](#installing-poetry)
-    - [Starting a new project](#starting-a-new-project)
-      - [pyproject.toml](#pyprojecttoml)
-      - [README](#readme)
-      - [project-name/ folder](#project-name-folder)
-      - [tests/ folder](#tests-folder)
-    - [Adding dependencies](#adding-dependencies)
-    - [Create a virtual environement](#create-a-virtual-environement)
-      - [Creating a virtual environment](#creating-a-virtual-environment)
-      - [Using your virtual environment](#using-your-virtual-environment)
-  - [Useful packages for a new project](#useful-packages-for-a-new-project)
-    - [Black](#black)
-    - [Flake8](#flake8)
-    - [iSort](#isort)
-    - [Pytest](#pytest)
-    - [Coverage](#coverage)
-    - [Sphinx](#sphinx)
-      - [Sphinx extensions](#sphinx-extensions)
-    - [Pydocstyle](#pydocstyle)
-  - [Building and publishing your project](#building-and-publishing-your-project)
-{:toc}
-Table of contents created through: https://ecotrust-canada.github.io/markdown-toc/ -->
+<!-- Table of contents can be created using: https://ecotrust-canada.github.io/markdown-toc/ 
+and added by pasting the output and adding {toc:} at the end -->
 
 ## Creating a new project
 
@@ -51,9 +27,9 @@ To create a new project, simply use
 poetry new project-name
 ```
 
-Be aware that poetry needs to be in the `PATH` variables if you want to use it from the command line.
+Be aware that poetry needs to be in the path variables if you want to use it from the command line.
 
-This will create a new directory named `project-name` with the following tree structure
+Creating a new project will create a new directory named `project-name` with the following tree structure
 
 ```bash
 project-name
@@ -87,7 +63,7 @@ Now let us go through the different files created by the `poetry new` command.
 #### pyproject.toml
 
 This file contains all the details about the project and its dependencies.
-An example of a basic `pyproject.toml` file can be found [here](pyproject.toml).
+An example of a basic `pyproject.toml` file can be found [here](https://github.com/ABohynDOE/python-project/blob/88338f296665a48c4909ba28e57a52b33ed084b1/pyproject.toml).
 It is divided in four basic sections:
 
 - `[tool.poetry]`
